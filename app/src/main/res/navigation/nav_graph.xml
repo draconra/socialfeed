@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.aditya.socialfeed.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:name="com.aditya.socialfeed.FeedFragment"
+        android:label="@string/fragment_feed"
+        tools:layout="@layout/fragment_feed">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
