@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/bg_button_stroke_black_20.xml" value="0.24722222222222223" />
         <entry key="app/src/main/res/drawable/bg_button_rounded_blue.xml" value="0.21614583333333334" />
+        <entry key="app/src/main/res/drawable/bg_button_rounded_brown.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/drawable/bg_button_stroke_black.xml" value="0.24722222222222223" />
+        <entry key="app/src/main/res/drawable/ic_close.xml" value="0.24722222222222223" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/dialog_add_url.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_feed.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_feed.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_url.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.1484375" />
       </map>
     </option>
   </component>

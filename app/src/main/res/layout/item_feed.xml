@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +12,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/ivFeed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true" />
+
         <TextView
+            android:id="@+id/tvProcess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lottieAnimation"
@@ -25,12 +30,82 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimation"
-            android:layout_width="wrap_content"
+            android:layout_width="87dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/loading_animation" />
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/playerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            app:item_index="@{index}"
+            app:on_state_change="@{callback}"
+            app:progressbar="@{llProcess}"
+            app:resize_mode="fill"
+            app:surface_type="texture_view"
+            app:thumbnail="@{thumbnail}"
+            app:video_url="@{dataModel.card.cardUrl}">
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@color/background"
+                android:scaleType="centerCrop"
+                app:thumbnail="@{dataModel.card.cardUrl}" />
+
+            <LinearLayout
+                android:id="@+id/llProcess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/progressBar"
+                    android:layout_width="87dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/loading_animation" />
+
+                <TextView
+                    android:id="@+id/tvProcessVideo"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_below="@+id/lottieAnimation"
+                    android:layout_centerHorizontal="true"
+                    android:text="Loading Video..."
+                    android:textColor="@color/blackGrey"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </com.google.android.exoplayer2.ui.PlayerView>
+
     </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="dataModel"
+            type="com.aditya.socialfeed.data.CardAndItemFeeds" />
+
+        <variable
+            name="callback"
+            type="com.aditya.socialfeed.util.PlayerStateCallback" />
+
+        <variable
+            name="index"
+            type="int" />
+
+    </data>
+
+</layout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "335669846597",
+    "firebase_url": "https://feeds-app-2021-default-rtdb.firebaseio.com",
+    "project_id": "feeds-app-2021",
+    "storage_bucket": "feeds-app-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335669846597:android:be35a44d5deb8e638db92c",
+        "android_client_info": {
+          "package_name": "com.aditya.socialfeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335669846597-skblvsvqo1ocd41j51gbv40frk9q3b5g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt8l8A31XMDMdB7YtmufGm23xQS9TKEXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "335669846597-skblvsvqo1ocd41j51gbv40frk9q3b5g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

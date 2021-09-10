@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="blackBorder">#333333</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#97FFDA</color>
     <color name="blackGrey">#595959</color>
     <color name="background">#D2F0E5</color>
+    <color name="transparent">#00000000</color>
+    <color name="brown">#717171</color>
 </resources>
