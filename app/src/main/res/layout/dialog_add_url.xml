@@ -5,57 +5,6 @@
     android:layout_height="wrap_content"
     android:padding="20dp">
 
-    <Button
-        android:id="@+id/btnPostAll"
-        android:layout_width="164dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/bg_button_rounded_blue"
-        android:text="Post all URL"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/flInputText" />
-
-    <FrameLayout
-        android:id="@+id/flInputText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_button_stroke_black"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle">
-
-        <EditText
-            android:id="@+id/etInputUrl"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:inputType="text"
-            android:hint="@string/title_insert_here"
-            android:layout_gravity="center"
-            android:background="@color/transparent" />
-
-        <Button
-            android:id="@+id/btnPaste"
-            android:layout_width="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"
-            android:text="@string/title_paste"
-            android:background="@drawable/bg_button_rounded_brown"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:layout_gravity="center_vertical|end"
-            android:layout_height="wrap_content"/>
-
-    </FrameLayout>
-
     <ImageView
         android:id="@+id/btnClose"
         android:layout_width="wrap_content"
@@ -63,6 +12,18 @@
         android:src="@drawable/ic_close"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnPostAll"
+        android:layout_width="164dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_button_rounded_blue"
+        android:text="Post all URL"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/tvTitle"
@@ -75,5 +36,84 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/svInput"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/btnPostAll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+
+        <com.aditya.socialfeed.util.MaxHeightRecyclerView
+            android:id="@+id/rvUrl"
+            app:maxHeight = "250dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content"/>
+
+        <FrameLayout
+            android:id="@+id/flInputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_stroke_black"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvUrl">
+
+            <EditText
+                android:id="@+id/etInputUrl"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:inputType="text"
+                android:hint="@string/title_insert_here"
+                android:layout_gravity="center"
+                android:background="@color/transparent" />
+
+            <Button
+                android:id="@+id/btnPaste"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:text="@string/title_paste"
+                android:background="@drawable/bg_button_rounded_brown"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:layout_gravity="center_vertical|end"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+
+        <Button
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/btnAddMore"
+            android:layout_width="181dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flInputText"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_stroke_black_40"
+            android:padding="10dp"
+            android:textColor="@color/blackBorder"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:text="Add more URL"
+            android:layout_height="48dp"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

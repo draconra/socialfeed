@@ -7,5 +7,6 @@
     <color name="blackGrey">#595959</color>
     <color name="background">#D2F0E5</color>
     <color name="transparent">#00000000</color>
+    <color name="blackBB">#BBBBBB</color>
     <color name="brown">#717171</color>
 </resources>

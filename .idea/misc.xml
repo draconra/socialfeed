@@ -7,6 +7,9 @@
         <entry key="app/src/main/res/drawable/bg_button_rounded_blue.xml" value="0.21614583333333334" />
         <entry key="app/src/main/res/drawable/bg_button_rounded_brown.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/drawable/bg_button_stroke_black.xml" value="0.24722222222222223" />
+        <entry key="app/src/main/res/drawable/bg_button_stroke_black_20.xml" value="0.18958333333333333" />
+        <entry key="app/src/main/res/drawable/bg_button_stroke_black_40.xml" value="0.18958333333333333" />
+        <entry key="app/src/main/res/drawable/bg_button_stroke_black_alt.xml" value="0.18958333333333333" />
         <entry key="app/src/main/res/drawable/ic_close.xml" value="0.24722222222222223" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.14895833333333333" />

@@ -4,6 +4,8 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,7 @@ import androidx.fragment.app.viewModels
 import com.aditya.socialfeed.application.SocialFeedApplication
 import com.aditya.socialfeed.data.CardFeed
 import com.aditya.socialfeed.databinding.DialogAddUrlBinding
+import com.aditya.socialfeed.ui.adapter.UrlAdapter
 import com.aditya.socialfeed.util.CommonUtil.enableStrictMode
 import com.aditya.socialfeed.util.CommonUtil.getContentType
 import com.aditya.socialfeed.viewmodel.CardFeedViewModelFactory
@@ -20,12 +23,15 @@ import com.aditya.socialfeed.viewmodel.FeedViewModel
 import kotlin.random.Random
 
 
-class AddUrlDialogFragment(private val listener: OnClickedListener) : DialogFragment() {
+class AddUrlDialogFragment(private val listener: OnClickedListener) : DialogFragment(),
+    UrlAdapter.UrlAdapterListener {
 
-    val feedViewModel: FeedViewModel by viewModels {
+    private val feedViewModel: FeedViewModel by viewModels {
         CardFeedViewModelFactory((activity?.application as SocialFeedApplication).repository)
     }
 
+    private var adapter: UrlAdapter? = null
+    private val modelList = ArrayList<CardFeed>()
     private var _binding: DialogAddUrlBinding? = null
     private val binding get() = _binding!!
 
@@ -56,8 +62,6 @@ class AddUrlDialogFragment(private val listener: OnClickedListener) : DialogFrag
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        enableStrictMode()
-
         setupView()
         setupClickListeners()
     }
@@ -71,6 +75,34 @@ class AddUrlDialogFragment(private val listener: OnClickedListener) : DialogFrag
     }
 
     private fun setupView() {
+        enableStrictMode()
+        adapter = UrlAdapter(modelList, this)
+        binding.rvUrl.adapter = adapter
+
+        binding.etInputUrl.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.isEmpty()) {
+                    binding.btnPaste.visibility = View.VISIBLE
+                    if (modelList.isEmpty()) {
+                        binding.btnAddMore.visibility = View.VISIBLE
+                    }
+                } else {
+                    binding.btnPaste.visibility = View.GONE
+                }
+            }
+        })
     }
 
     private fun setupClickListeners() {
@@ -96,9 +128,22 @@ class AddUrlDialogFragment(private val listener: OnClickedListener) : DialogFrag
         binding.btnClose.setOnClickListener {
             dismiss()
         }
+
+        binding.btnAddMore.setOnClickListener {
+            val url = binding.etInputUrl.text.toString()
+            modelList.add(CardFeed(Random.nextLong(), url, getContentType(url) ?: ""))
+            if (modelList.size == 10) {
+                binding.btnAddMore.visibility = View.GONE
+            }
+            adapter?.updateList(modelList)
+        }
     }
 
     interface OnClickedListener {
         fun onBtnStartClicked()
+    }
+
+    override fun onEmptyObject() {
+        binding.btnAddMore.visibility = View.VISIBLE
     }
 }
