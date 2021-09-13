@@ -115,7 +115,7 @@ class AddUrlDialogFragment(private val listener: OnClickedListener) : DialogFrag
 
         binding.btnPaste.setOnClickListener {
             var clipboardManager: ClipboardManager =
-                activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager;
+                activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val pasteData: ClipData = clipboardManager.primaryClip!!
             val item = pasteData.getItemAt(0)
             binding.etInputUrl.setText(item.text.toString())
@@ -132,6 +132,7 @@ class AddUrlDialogFragment(private val listener: OnClickedListener) : DialogFrag
             if (modelList.size == 10) {
                 binding.btnAddMore.visibility = View.GONE
             }
+            binding.btnPostAll.isEnabled = modelList.size > 0
             adapter?.updateList(modelList)
         }
     }
@@ -142,5 +143,6 @@ class AddUrlDialogFragment(private val listener: OnClickedListener) : DialogFrag
 
     override fun onEmptyObject() {
         binding.btnAddMore.visibility = View.VISIBLE
+        binding.btnPostAll.isEnabled = false
     }
 }

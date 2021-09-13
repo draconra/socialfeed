@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 class CardFeedRepository(
     private val cardFeedDao: CardFeedDao) {
 
-    val allCards: Flow<List<CardFeed>> = cardFeedDao.getAlphabetizedCardFeed()
+    val allCards: Flow<List<CardFeed>> = cardFeedDao.getCardFeed()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
