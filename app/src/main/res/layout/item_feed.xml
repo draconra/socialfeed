@@ -18,27 +18,26 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true" />
 
-        <TextView
-            android:id="@+id/tvProcess"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lottieAnimation"
-            android:layout_centerHorizontal="true"
-            android:text="Loading Image..."
-            android:textColor="@color/blackGrey"
-            android:textSize="20sp" />
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimation"
             android:layout_width="87dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
             app:lottie_rawRes="@raw/loading_animation" />
+
+        <TextView
+            android:id="@+id/tvProcess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Downloading Image..."
+            android:layout_below="@+id/lottieAnimation"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/blackGrey"
+            android:textSize="20sp" />
 
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/playerView"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="true"
@@ -48,7 +47,7 @@
             app:resize_mode="fill"
             app:surface_type="texture_view"
             app:thumbnail="@{thumbnail}"
-            app:video_url="@{dataModel.card.cardUrl}">
+            app:video_url="@{dataModel.cardUrl}">
 
             <ImageView
                 android:id="@+id/thumbnail"
@@ -57,7 +56,7 @@
                 android:adjustViewBounds="true"
                 android:background="@color/background"
                 android:scaleType="centerCrop"
-                app:thumbnail="@{dataModel.card.cardUrl}" />
+                app:thumbnail="@{dataModel.cardUrl}" />
 
             <LinearLayout
                 android:id="@+id/llProcess"
@@ -96,7 +95,7 @@
 
         <variable
             name="dataModel"
-            type="com.aditya.socialfeed.data.CardAndItemFeeds" />
+            type="com.aditya.socialfeed.data.CardFeed" />
 
         <variable
             name="callback"

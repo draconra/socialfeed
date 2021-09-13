@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CardFeedDao {
 
-    @Query("SELECT * FROM card_table ORDER BY cardUrl ASC")
+    @Query("SELECT * FROM card_table ORDER BY id ASC")
     fun getAlphabetizedCardFeed(): Flow<List<CardFeed>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -14,9 +14,4 @@ interface CardFeedDao {
 
     @Query("DELETE FROM card_table")
     suspend fun deleteAll()
-
-    @Transaction
-    @Query("SELECT * FROM card_table")
-    fun getCardWithItemFeed(): Flow<List<CardAndItemFeeds>>
-
 }

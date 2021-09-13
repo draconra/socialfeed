@@ -10,6 +10,6 @@ class SocialFeedApplication: Application() {
 
     private val applicationScope = CoroutineScope(SupervisorJob())
 
-    val database by lazy { FeedRoomDataBase.getDatabase(this, applicationScope) }
-    val repository by lazy { CardFeedRepository(database.cardFeedDao(),database.itemFeedDao()) }
+    private val database by lazy { FeedRoomDataBase.getDatabase(this, applicationScope) }
+    val repository by lazy { CardFeedRepository(database.cardFeedDao()) }
 }

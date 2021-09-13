@@ -9,7 +9,5 @@ import androidx.room.PrimaryKey
         val id: Long = 0,
         val cardUrl: String,
         val cardType: String
-    ){
-        var visibility: Boolean = false
-}
+    )
 

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.aditya.socialfeed.application.SocialFeedApplication
-import com.aditya.socialfeed.data.CardAndItemFeeds
+import com.aditya.socialfeed.data.CardFeed
 import com.aditya.socialfeed.databinding.FragmentFeedBinding
 import com.aditya.socialfeed.ui.adapter.CardFeedAdapter
 import com.aditya.socialfeed.ui.dialog.AddUrlDialogFragment
@@ -23,7 +23,7 @@ import com.aditya.socialfeed.viewmodel.FeedViewModel
 class FeedFragment : Fragment(), AddUrlDialogFragment.OnClickedListener {
 
     private var feedAdapter: CardFeedAdapter? = null
-    private val feedList = ArrayList<CardAndItemFeeds>()
+    private val feedList = ArrayList<CardFeed>()
 
     // for handle scroll and get first visible item index
     private lateinit var scrollListener: RecyclerViewScrollListener
@@ -60,12 +60,12 @@ class FeedFragment : Fragment(), AddUrlDialogFragment.OnClickedListener {
 
     private fun setUpView() {
 
-        val allTasks = feedViewModel.allCardsAndItemFeeds
+        val allTasks = feedViewModel.allFeeds
         feedAdapter = CardFeedAdapter(activity, allTasks)
         binding.rvFeeds.setHasFixedSize(true)
         binding.rvFeeds.adapter = feedAdapter
 
-        feedViewModel.allCardsAndItemFeeds.observe(requireActivity()) { feeds ->
+        feedViewModel.allFeeds.observe(requireActivity()) { feeds ->
             feeds?.let { feedAdapter?.submitList(it) }
             if (feeds.isNotEmpty()) {
                 binding.llNothing.visibility = View.GONE

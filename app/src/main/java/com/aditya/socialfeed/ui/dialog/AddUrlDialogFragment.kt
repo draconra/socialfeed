@@ -107,12 +107,9 @@ class AddUrlDialogFragment(private val listener: OnClickedListener) : DialogFrag
 
     private fun setupClickListeners() {
         binding.btnPostAll.setOnClickListener {
-            val feed = CardFeed(
-                id = Random.nextLong(),
-                cardUrl = binding.etInputUrl.text.toString(),
-                cardType = getContentType(binding.etInputUrl.text.toString()) ?: ""
-            )
-            feedViewModel.insertCard(feed)
+            modelList.forEach {
+                feedViewModel.insertCard(it)
+            }
             dismiss()
         }
 

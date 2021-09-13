@@ -8,11 +8,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [CardFeed::class,ItemFeed::class], version = 1, exportSchema = false)
+@Database(entities = [CardFeed::class], version = 1, exportSchema = false)
 abstract class FeedRoomDataBase : RoomDatabase() {
 
     abstract fun cardFeedDao(): CardFeedDao
-    abstract fun itemFeedDao(): ItemFeedDao
 
     companion object{
         @Volatile
@@ -44,14 +43,13 @@ abstract class FeedRoomDataBase : RoomDatabase() {
             super.onCreate(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    populateDatabase(database.cardFeedDao(),database.itemFeedDao())
+                    populateDatabase(database.cardFeedDao())
                 }
             }
         }
 
-        suspend fun populateDatabase(cardFeedDao: CardFeedDao, itemFeedDao: ItemFeedDao){
+        suspend fun populateDatabase(cardFeedDao: CardFeedDao){
             cardFeedDao.deleteAll()
-            itemFeedDao.deleteAllItem()
         }
     }
 
